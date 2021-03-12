@@ -1,0 +1,52 @@
+name: task-skeleton-plugin
+description: generated using cpm
+version: 0.0.1
+guides:
+- files:
+  - '*'
+  actions:
+  - copy: {}
+  - replace:
+      pattern: Example Task Plugin
+      with: '{{.Input.pluginName}}'
+  - replace:
+      pattern: cd.go.contrib.task.skeleton
+      with: '{{.Input.pluginID}}'
+  - replace:
+      pattern: Some longer description of your plugin goes here
+      with: '{{.Input.pluginDescription}}'
+  - replace:
+      pattern: Acme Corp
+      with: '{{.Input.vendorName}}'
+  - replace:
+      pattern: https://github.com/user/repository
+      with: '{{.Input.vendorURL}}'
+  - replace:
+      pattern: 16.12.0
+      with: '{{.Input.goCdVersion}}'
+  - replace:
+      pattern: 'ThoughtWorks, Inc'
+      with: '{{.Input.vendorName}}'
+  - rename:
+      pattern: cd.go.contrib.task.skeleton
+      with: '{{.Input.pluginID | replace "." "/"}}'
+prompts:
+  - name: pluginName
+    message: Name
+    default: Example Task Plugin
+  - name: pluginID
+    message: Plugin Identifier
+    help: Unique identifier to identify this plugin
+    default: cd.go.contrib.task.skeleton
+  - name: pluginDescription
+    message: Description
+    default: Some longer description of your plugin goes here
+  - name: vendorName
+    message: Vendor Name
+    default: Acme Corp
+  - name: vendorURL
+    message: Vendor URL
+    default: https://github.com/user/repository
+  - name: goCdVersion
+    message: Supported GoCD version
+    default: 16.12.0
